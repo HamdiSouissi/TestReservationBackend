@@ -9,6 +9,9 @@ import com.testreservations.testreservation.reservation.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class BillServiceImp implements BillService {
 
@@ -44,5 +47,19 @@ public class BillServiceImp implements BillService {
         billDTO.setAmount(amount);
 
         return billDTO;
+    }
+
+    @Override
+    public List<BillDTO> getAllBills() {
+        return billRepository.findAll().stream()
+                .map(bill -> {
+                    BillDTO billDTO = new BillDTO();
+                    billDTO.setId(bill.getId());
+                    billDTO.setReservationId(bill.getReservationId());
+                    billDTO.setPaymentMethod(bill.getPaymentMethod());
+                    billDTO.setAmount(bill.getAmount());
+                    return billDTO;
+                })
+                .collect(Collectors.toList());
     }
 }

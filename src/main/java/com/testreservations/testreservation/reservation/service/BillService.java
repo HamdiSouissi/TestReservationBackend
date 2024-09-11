@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BillService {
     BillDTO createBill(Long reservationId, String paymentMethod);
+    List<BillDTO> getAllBills();
 }
