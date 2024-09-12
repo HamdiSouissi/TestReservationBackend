@@ -16,5 +16,6 @@ public interface ReservationService {
 
     void deleteReservation(Long id);
 
-    boolean payReservation(Long reservationId, String paymentMethod);
+    boolean payReservation(Long reservationId);
+
 }

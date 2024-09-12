@@ -26,11 +26,7 @@ public class BillServiceImp implements BillService {
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
 
-        // Calculer le montant de la facture (par exemple, appliquer une remise si le prix dépasse 100 euros)
-        double amount = reservation.getBus().getPrice();
-        if (amount > 100) {
-            amount *= 0.95; // Remise de 5%
-        }
+        double amount = calculateAmount(reservation);
 
         Bill bill = new Bill();
         bill.setReservationId(reservationId);
@@ -39,14 +35,17 @@ public class BillServiceImp implements BillService {
 
         Bill savedBill = billRepository.save(bill);
 
-        // Convertir la facture en DTO
         BillDTO billDTO = new BillDTO();
         billDTO.setId(savedBill.getId());
-        billDTO.setReservationId(reservationId);
-        billDTO.setPaymentMethod(paymentMethod);
-        billDTO.setAmount(amount);
+        billDTO.setReservationId(savedBill.getReservationId());
+        billDTO.setPaymentMethod(savedBill.getPaymentMethod());
+        billDTO.setAmount(savedBill.getAmount());
 
         return billDTO;
+    }
+
+    private double calculateAmount(Reservation reservation) {
+        return 100.0;
     }
 
     @Override
@@ -56,7 +55,6 @@ public class BillServiceImp implements BillService {
                     BillDTO billDTO = new BillDTO();
                     billDTO.setId(bill.getId());
                     billDTO.setReservationId(bill.getReservationId());
-                    billDTO.setPaymentMethod(bill.getPaymentMethod());
                     billDTO.setAmount(bill.getAmount());
                     return billDTO;
                 })

@@ -50,7 +50,7 @@ public class BusServiceImp implements BusService {
         busRepository.deleteById(id);
     }
 
-    // Mappage entité -> DTO
+
     private BusDTO convertToDTO(Bus bus) {
         BusDTO busDTO = new BusDTO();
         busDTO.setId(bus.getId());
@@ -61,7 +61,7 @@ public class BusServiceImp implements BusService {
         return busDTO;
     }
 
-    // Mappage DTO -> entité
+
     private Bus convertToEntity(BusDTO busDTO) {
         Bus bus = new Bus();
         bus.setBusNumber(busDTO.getBusNumber());

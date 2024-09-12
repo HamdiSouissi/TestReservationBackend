@@ -35,7 +35,7 @@ public class ReservationServiceImp implements ReservationService {
     private BillRepository billRepository;
 
     @Autowired
-    private BillService billService; // Service pour gérer les factures
+    private BillService billService;
 
     @Override
     public List<ReservationDTO> getAllReservations() {
@@ -63,15 +63,15 @@ public class ReservationServiceImp implements ReservationService {
         Reservation reservation = reservationRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
 
-        // Mettre à jour les détails de la réservation
+
         reservation.setTravelDate(reservationDTO.getTravelDate());
 
-        // Mettre à jour le client associé
+
         Client client = clientRepository.findById(reservationDTO.getClient().getId())
                 .orElseThrow(() -> new RuntimeException("Client not found"));
         reservation.setClient(client);
 
-        // Mettre à jour le bus associé
+
         Bus bus = busRepository.findById(reservationDTO.getBus().getId())
                 .orElseThrow(() -> new RuntimeException("Bus not found"));
         reservation.setBus(bus);
@@ -86,38 +86,14 @@ public class ReservationServiceImp implements ReservationService {
     }
 
     @Override
-    public boolean payReservation(Long reservationId, String paymentMethod) {
+    public boolean payReservation(Long reservationId) {
+
         Reservation reservation = reservationRepository.findById(reservationId)
                 .orElseThrow(() -> new RuntimeException("Reservation not found"));
-
-        // Simuler la validation du paiement
-        boolean paymentSuccessful = simulatePayment(paymentMethod);
-        if (!paymentSuccessful) {
-            return false; // Le paiement a échoué
-        }
-
-        // Créer la facture après le paiement réussi
-        BillDTO billDTO = new BillDTO();
-        billDTO.setReservationId(reservationId);
-        billDTO.setPaymentMethod(paymentMethod);
-
-        BillDTO createdBill = billService.createBill(reservationId, paymentMethod);
-
-        if (createdBill != null) {
-            // Le paiement est réussi et la facture est créée
-            return true;
-        } else {
-            // Échec de la création de la facture
-            return false;
-        }
-    }
-
-    private boolean simulatePayment(String paymentMethod) {
-        // Simuler le succès du paiement, dans une vraie application vous devrez intégrer un système de paiement
         return true;
     }
 
-    // Mappage entité -> DTO
+
     private ReservationDTO convertToDTO(Reservation reservation) {
         ReservationDTO dto = new ReservationDTO();
         dto.setId(reservation.getId());
@@ -140,7 +116,7 @@ public class ReservationServiceImp implements ReservationService {
         return dto;
     }
 
-    // Mappage DTO -> entité
+
     private Reservation convertToEntity(ReservationDTO dto) {
         Reservation reservation = new Reservation();
         reservation.setTravelDate(dto.getTravelDate());

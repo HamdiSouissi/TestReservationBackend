@@ -6,16 +6,21 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="reservation")
 @Data
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate travelDate;
 
     @ManyToOne
+    @JoinColumn(name = "bus_id", nullable = false)
+    private Bus bus;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @ManyToOne
-    private Bus bus;
+    @Column(name="date")
+    private LocalDate travelDate;
 }

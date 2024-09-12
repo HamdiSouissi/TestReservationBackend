@@ -5,6 +5,6 @@ import com.testreservations.testreservation.reservation.dto.BillDTO;
 import java.util.List;
 
 public interface BillService {
-    BillDTO createBill(Long reservationId, String paymentMethod);
     List<BillDTO> getAllBills();
+    BillDTO createBill(Long reservationId, String paymentMethod);
 }

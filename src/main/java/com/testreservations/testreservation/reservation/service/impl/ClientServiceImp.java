@@ -48,7 +48,7 @@ public class ClientServiceImp implements ClientService {
         clientRepository.deleteById(id);
     }
 
-    // Mappage des entités vers DTO
+
     private ClientDTO convertToDTO(Client client) {
         ClientDTO clientDTO = new ClientDTO();
         clientDTO.setId(client.getId());
@@ -57,7 +57,7 @@ public class ClientServiceImp implements ClientService {
         return clientDTO;
     }
 
-    // Mappage des DTO vers entités
+
     private Client convertToEntity(ClientDTO clientDTO) {
         Client client = new Client();
         client.setName(clientDTO.getName());

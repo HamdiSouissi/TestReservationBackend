@@ -1,28 +1,26 @@
 package com.testreservations.testreservation.reservation.model;
 
+
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.Data;
+
+
 @Entity
+@Table(name = "bills")
+@Data
 public class Bill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Identifiant de la facture
+    private Long id;
 
-    private Long reservationId; // Identifiant de la réservation associée
-    private String paymentMethod; // Méthode de paiement
-    private Double amount; // Montant de la facture
+    @Column(name = "reservation_id", nullable = false)
+    private Long reservationId;
 
-    // Getters et setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    @Column(name = "payment_method", nullable = false)
+    private String paymentMethod;
 
-    public Long getReservationId() { return reservationId; }
-    public void setReservationId(Long reservationId) { this.reservationId = reservationId; }
-
-    public String getPaymentMethod() { return paymentMethod; }
-    public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
-
-    public Double getAmount() { return amount; }
-    public void setAmount(Double amount) { this.amount = amount; }
+    @Column(name = "amount", nullable = false)
+    private double amount;
 }

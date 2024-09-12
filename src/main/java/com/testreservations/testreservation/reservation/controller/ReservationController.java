@@ -1,8 +1,10 @@
 package com.testreservations.testreservation.reservation.controller;
 
+import com.testreservations.testreservation.reservation.dto.BillDTO;
 import com.testreservations.testreservation.reservation.dto.ReservationDTO;
 import com.testreservations.testreservation.reservation.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,8 +44,17 @@ public class ReservationController {
     }
 
     @PostMapping("/{id}/pay")
-    public ResponseEntity<Boolean> payReservation(@PathVariable Long id, @RequestParam String paymentMethod) {
-        boolean paymentStatus = reservationService.payReservation(id, paymentMethod);
-        return ResponseEntity.ok(paymentStatus);
+    public ResponseEntity<String> payReservation(@PathVariable Long id) {
+        try {
+            boolean paymentStatus = reservationService.payReservation(id);
+            if (paymentStatus) {
+                return new ResponseEntity<>("Payment successful", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Payment failed", HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
