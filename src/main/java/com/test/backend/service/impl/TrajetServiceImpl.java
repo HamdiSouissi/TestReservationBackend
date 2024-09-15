@@ -1,8 +1,8 @@
 package com.test.backend.service.impl;
 
 import com.test.backend.api.dto.TrajetDto;
-import com.test.backend.domain.Trajet;
-import com.test.backend.entity.TrajetMapper;
+import com.test.backend.entity.Trajet;
+import com.test.backend.mapper.TrajetMapper;
 import com.test.backend.repository.BusRepository;
 import com.test.backend.repository.TrajetRepository;
 import com.test.backend.service.ITrajetService;

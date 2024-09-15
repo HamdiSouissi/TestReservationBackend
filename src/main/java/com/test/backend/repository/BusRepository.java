@@ -1,6 +1,6 @@
 package com.test.backend.repository;
 
-import com.test.backend.domain.Bus;
+import com.test.backend.entity.Bus;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;

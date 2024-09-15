@@ -1,8 +1,8 @@
 package com.test.backend.service.impl;
 
 import com.test.backend.api.dto.BusDto;
-import com.test.backend.domain.Bus;
-import com.test.backend.entity.BusMapper;
+import com.test.backend.entity.Bus;
+import com.test.backend.mapper.BusMapper;
 import com.test.backend.repository.BusRepository;
 import com.test.backend.service.IBusService;
 import java.util.List;

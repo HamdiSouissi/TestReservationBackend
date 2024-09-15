@@ -1,6 +1,6 @@
 package com.test.backend.repository;
 
-import com.test.backend.domain.Reservation;
+import com.test.backend.entity.Reservation;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 

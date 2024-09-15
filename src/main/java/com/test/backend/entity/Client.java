@@ -1,4 +1,4 @@
-package com.test.backend.domain;
+package com.test.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

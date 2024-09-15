@@ -1,8 +1,8 @@
-package com.test.backend.entity;
+package com.test.backend.mapper;
 
 
 import com.test.backend.api.dto.TrajetDto;
-import com.test.backend.domain.Trajet;
+import com.test.backend.entity.Trajet;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

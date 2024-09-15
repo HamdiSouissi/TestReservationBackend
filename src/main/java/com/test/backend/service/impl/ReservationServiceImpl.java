@@ -1,10 +1,10 @@
 package com.test.backend.service.impl;
 
 import com.test.backend.api.dto.ReservationDto;
-import com.test.backend.domain.Bus;
-import com.test.backend.domain.Reservation;
-import com.test.backend.domain.Trajet;
-import com.test.backend.entity.ReservationMapper;
+import com.test.backend.entity.Bus;
+import com.test.backend.entity.Reservation;
+import com.test.backend.entity.Trajet;
+import com.test.backend.mapper.ReservationMapper;
 import com.test.backend.repository.BusRepository;
 import com.test.backend.repository.ReservationRepository;
 import com.test.backend.service.IReservationService;

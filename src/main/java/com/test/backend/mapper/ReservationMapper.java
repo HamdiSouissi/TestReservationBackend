@@ -1,7 +1,7 @@
-package com.test.backend.entity;
+package com.test.backend.mapper;
 
 import com.test.backend.api.dto.ReservationDto;
-import com.test.backend.domain.Reservation;
+import com.test.backend.entity.Reservation;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;

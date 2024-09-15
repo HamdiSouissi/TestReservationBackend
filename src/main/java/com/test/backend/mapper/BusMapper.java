@@ -1,7 +1,7 @@
-package com.test.backend.entity;
+package com.test.backend.mapper;
 
 import com.test.backend.api.dto.BusDto;
-import com.test.backend.domain.Bus;
+import com.test.backend.entity.Bus;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
